@@ -1,0 +1,24 @@
+application: insiderr-alpha
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /api/v1/.*
+  script: isrv.api.app
+  secure: optional
+- url: /tasks/.*
+  script: isrv.api.app
+  secure: optional
+- url: /_we/.*
+  script: isrv.webedit.app
+  secure: optional
+- url: /static
+  static_dir: static
+  secure: optional
+
+libraries:
+    - name: jinja2
+      version: latest
+
